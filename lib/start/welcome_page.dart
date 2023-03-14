@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_hotel/start/navigator_choice_page.dart';
 import 'package:gestion_hotel/start/subtitleText.dart';
 import 'package:gestion_hotel/start/titleText.dart';
 import 'package:gestion_hotel/start/home_page.dart';
@@ -57,7 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
                        ),
                        SizedBox(height: 10),
                        ElevatedButton(onPressed: (){
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
+                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ChoicePage()));
                        }, child:SubTitleText(text:"Get Started",
                            color:Colors.white
                        )
