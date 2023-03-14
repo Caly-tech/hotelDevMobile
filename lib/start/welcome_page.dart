@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestion_hotel/main.dart';
 import 'package:gestion_hotel/start/subtitleText.dart';
 import 'package:gestion_hotel/start/titleText.dart';
+import 'package:gestion_hotel/start/home_page.dart';
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
@@ -21,9 +21,9 @@ class _WelcomePageState extends State<WelcomePage> {
     "Profil"
   ];
   List subtitle=[
-    "Trouvé les chambres en quelque click",
-    "Reservé chambre bar facilement",
-    "Gerer vos données de maniere efficace"
+    "Trouver des chambres en quelques clicks",
+    "Reserver des chambres bars places facilement et rapidement",
+    "Gerer vos données personnelles de maniere efficace"
   ];
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,16 @@ class _WelcomePageState extends State<WelcomePage> {
          scrollDirection: Axis.vertical,
            itemBuilder: (context,index){
            return Container(
+             margin: EdgeInsets.only(top:90),
              width:double.infinity,
              height: double.infinity,
              decoration: BoxDecoration(
                image:DecorationImage(
-                   image:AssetImage("assets/images/"+images[index]),
+                   image:AssetImage("assets/images/"+images[index])
              ),
              ),
              child: Container(
-               margin: EdgeInsets.only(top:100,left: 20,right: 20),
+               margin: EdgeInsets.only(top:5,left: 20,right: 20),
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
@@ -49,11 +50,12 @@ class _WelcomePageState extends State<WelcomePage> {
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
                        TitleText(text:title[index], color:Colors.black),
-                       //SizedBox(height: 20),
+                       SizedBox(height: 10),
                        Container(
                          width: 250,
                          child: SubTitleText(text:subtitle[index], color: Colors.pink,),
                        ),
+                       SizedBox(height: 10),
                        ElevatedButton(onPressed: (){
                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
                        }, child:SubTitleText(text:"Get Started",
