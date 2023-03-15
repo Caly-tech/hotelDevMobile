@@ -51,7 +51,7 @@ class _CategorieState extends State<Categorie> {
                           onPressed: (){
                             if(_formKey.currentState!.validate()){
 
-                              setCategory(nomCategorie.text, tarif.text);
+                              addCategory(nomCategorie.text, tarif.text);
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content:Text('Successful add Category !!!'),
@@ -69,7 +69,7 @@ class _CategorieState extends State<Categorie> {
       ),
       ],
         ),
-          Container(
+         /* Container(
             margin: EdgeInsets.only(top: 50),
             child:Column(
               children: [
@@ -110,10 +110,29 @@ class _CategorieState extends State<Categorie> {
                )
               ],
             ),
-          )
+          )*/
       ],
     ),
     );
+  }
+  Future addCategory(nomCategorie,tarif) async{
+    Map list={
+      'nom_categorie':nomCategorie,
+      'tarifs':tarif
+    };
+    var url ='http://192.168.1.4:8000/createCategories';
+    var response = await http.post(Uri.parse(url),body:list, headers: {
+      'Content-type':'application/json',
+    });
+    if(response.statusCode==200){
+      var jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content:Text('Successful add Categorie !!!'),
+            backgroundColor: Colors.green,
+          )
+      );
+    }
   }
 }
 
