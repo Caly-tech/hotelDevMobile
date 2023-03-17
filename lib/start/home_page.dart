@@ -38,9 +38,9 @@ class _HomePageState extends State<HomePage> {
           currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home),label:"Home",backgroundColor: Colors.pink),
-          BottomNavigationBarItem(icon: Icon(Icons.room),label:"Chambre"),
-          BottomNavigationBarItem(icon: Icon(Icons.category),label:"Category"),
-          BottomNavigationBarItem(icon: Icon(Icons.person_add),label:"Client"),
+          BottomNavigationBarItem(icon: Icon(Icons.room),label:"Chambre",backgroundColor: Colors.pink),
+          BottomNavigationBarItem(icon: Icon(Icons.category),label:"Category",backgroundColor: Colors.pink),
+          BottomNavigationBarItem(icon: Icon(Icons.person_add),label:"Client",backgroundColor: Colors.pink),
         ],
           onTap: (index){
           setState(() {

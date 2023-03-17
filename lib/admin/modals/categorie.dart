@@ -64,48 +64,7 @@ class _CategorieState extends State<Categorie> {
       ),
       ],
         ),
-         /* Container(
-            margin: EdgeInsets.only(top: 50),
-            child:Column(
-              children: [
-                TitleText(text: "Liste Catégorie", color:Colors.black,size: 15,),
-               SizedBox(height: 12),
-               Container(
-                 width: MediaQuery.of(context).size.width*1,
-                 child: FutureBuilder(
-                     future: getCategory(),
-                     builder:(context,snapshot){
-                       if(snapshot.data==null){
-                         return CircularProgressIndicator();
-                       }
-                       else{
-                            return DataTable(
-                                columns:[
-                                      DataColumn(label:TitleText(text:"Nom Categorie",color: Colors.black,size: 14,)),
-                                      DataColumn(label:TitleText(text:"Tarif",color: Colors.black,size: 14,)),
-                                ],
-                                rows:snapshot.data.map<DataRow>((data){
-                                  var name =data['nom_categorie'].toString();
-                                  var tarif = data['tarifs'].toString();
 
-                                  return DataRow(
-                                      cells:[
-                                              DataCell(TitleText(text:name,color: Colors.black,size:12,)),
-                                              DataCell(TitleText(text:tarif,color: Colors.black,size:12,))
-                                      ]
-                                  );
-                                }
-
-
-                                ),
-                            );
-                       }
-                     }
-                 ),
-               )
-              ],
-            ),
-          )*/
       ],
     ),
     );
@@ -123,7 +82,7 @@ class _CategorieState extends State<Categorie> {
       var jsonResponse = jsonDecode(response.body);
       print(jsonResponse);
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content:Text('Successful add Categorie !!!'),
+          const SnackBar(content:Text('Categorie ajouté avec success!!!'),
             backgroundColor: Colors.green,
           )
       );

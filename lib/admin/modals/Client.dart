@@ -32,7 +32,7 @@ class _ClientState extends State<Client> {
           children: [
             Column(
               children: [
-                TitleText(text:"Ajouter Catégorie", color:Colors.black, size: 15,),
+                TitleText(text:"Ajouter Client", color:Colors.black, size: 15,),
                 const SizedBox(height: 10),
                 Form(
                     key: _formKey,
@@ -64,6 +64,9 @@ class _ClientState extends State<Client> {
                               if(_formKey.currentState!.validate()) {
                                 addClient(prenomController.text, nameController.text,
                                     telephoneController.text);
+                                prenomController.clear();
+                                nameController.clear();
+                                telephoneController.clear();
                               }
                             },
                             child:const Text("Envoyer"),
@@ -102,7 +105,7 @@ class _ClientState extends State<Client> {
     if(response.statusCode==200){
       var jsonResponse = jsonEncode(response.body);
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content:Text('Successful add Client !!!'),
+          const SnackBar(content:Text('Client ajouté avec success!!!'),
             backgroundColor: Colors.green,
           )
       );

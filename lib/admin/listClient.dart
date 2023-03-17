@@ -44,7 +44,6 @@ class _ListClientState extends State<ListClient> {
                                           DataColumn(label:TitleText(text:"ID",color: Colors.black,size: 14,)),
                                           DataColumn(label:TitleText(text:"Prenom",color: Colors.black,size: 14,)),
                                           DataColumn(label:TitleText(text:"Nom",color: Colors.black,size: 14,)),
-                                          DataColumn(label:TitleText(text:"Creer",color: Colors.black,size: 14,)),
                                           DataColumn(label:TitleText(text:"Info",color: Colors.black,size: 14,)),
                                         ],
                                         rows:snapshot.data.map<DataRow>((data){
@@ -52,13 +51,11 @@ class _ListClientState extends State<ListClient> {
                                           var idString=id.toString();
                                           var name =data['Name'].toString();
                                           var prenom = data['Prenom'].toString();
-                                          var crer = data['CreatedAt'].toString();
                                           return DataRow(
                                               cells:[
                                                 DataCell(TitleText(text:idString,color: Colors.black,size:12,)),
                                                 DataCell(TitleText(text:prenom,color: Colors.black,size:12,)),
                                                 DataCell(TitleText(text:name,color: Colors.black,size:12,)),
-                                                DataCell(TitleText(text:crer,color: Colors.black,size:12,)),
                                                 DataCell(ElevatedButton( child:const Text("Voir"),onPressed: (){
                                                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
                                                      DetailClient(id: idString)
