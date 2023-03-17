@@ -16,6 +16,7 @@ class Categorie extends StatefulWidget {
 
 class _CategorieState extends State<Categorie> {
   final _formKey=GlobalKey<FormState>();
+
   TextEditingController nomCategorie = TextEditingController();
   TextEditingController tarif =TextEditingController();
   @override
@@ -27,7 +28,7 @@ class _CategorieState extends State<Categorie> {
         Column(
           children: [
           TitleText(text:"Ajouter Catégorie", color:Colors.black, size: 15,),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Form(
               key: _formKey,
                 child:Column(
@@ -52,12 +53,6 @@ class _CategorieState extends State<Categorie> {
                             if(_formKey.currentState!.validate()){
 
                               addCategory(nomCategorie.text, tarif.text);
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content:Text('Successful add Category !!!'),
-                                    backgroundColor: Colors.green,
-                                  )
-                              );
                             }
                           },
                           child:const Text("Envoyer"),
@@ -117,13 +112,13 @@ class _CategorieState extends State<Categorie> {
   }
   Future addCategory(nomCategorie,tarif) async{
     Map list={
-      'nom_categorie':nomCategorie,
-      'tarifs':tarif
+      'NomCategorie':nomCategorie,
+      'Tarifs':tarif
     };
     var url ='http://192.168.1.4:8000/createCategories';
-    var response = await http.post(Uri.parse(url),body:list, headers: {
-      'Content-type':'application/json',
-    });
+    var response = await http.post(Uri.parse(url),body:list,
+      //  headers: {'Content-type':'application/json',}
+    );
     if(response.statusCode==200){
       var jsonResponse = jsonDecode(response.body);
       print(jsonResponse);

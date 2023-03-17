@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gestion_hotel/admin/listClient.dart';
 
 import '../../api/apiMethode.dart';
 import '../../start/titleText.dart';
@@ -17,8 +18,11 @@ class Client extends StatefulWidget {
 class _ClientState extends State<Client> {
 
   final _formKey=GlobalKey<FormState>();
+
   TextEditingController nameController =TextEditingController();
   TextEditingController prenomController= TextEditingController();
+  TextEditingController telephoneController =TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,13 +50,21 @@ class _ClientState extends State<Client> {
                           nameField:"Nom",
                         ),
                         const SizedBox(height: 10),
+                        CustomForm(
+                          comment:"Saisir le numero de telephone",
+                          controller:telephoneController,
+                          nameField:"Telephone",
+                        ),
+                        const SizedBox(height: 10),
                         SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
                             onPressed: (){
-                              _formKey.currentState!.validate();
-                              addClient();
+                              if(_formKey.currentState!.validate()) {
+                                addClient(prenomController.text, nameController.text,
+                                    telephoneController.text);
+                              }
                             },
                             child:const Text("Envoyer"),
                           ),
@@ -63,72 +75,30 @@ class _ClientState extends State<Client> {
                 ),
               ],
             ),
-            Column(
-              children: [
-                SizedBox(height: 10),
-                TitleText(text: "Liste Client", color:Colors.black,size: 15,),
-                const SizedBox(height: 10),
-                SingleChildScrollView(
-                    child: Expanded(
-                      child:Container(
-                          width: MediaQuery.of(context).size.width*1,
-                          child:SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                FutureBuilder(
-                                    future:getClients(),
-                                    builder:(context,snapshot){
-                                      print(snapshot.data);
-                                      if(snapshot.data==null){
-                                        return CircularProgressIndicator();
-                                      }
-                                      else{
-                                        return DataTable(
-                                          columns:[
-                                            DataColumn(label:TitleText(text:"Prenom",color: Colors.black,size: 14,)),
-                                            DataColumn(label:TitleText(text:"Nom",color: Colors.black,size: 14,)),
-                                            DataColumn(label:TitleText(text:"Creer",color: Colors.black,size: 14,)),
-                                          ],
-                                          rows:snapshot.data.map<DataRow>((data){
-                                            var name =data['Name'].toString();
-                                            var prenom = data['Prenom'].toString();
-                                            var crer = data['CreatedAt'].toString();
-                                            return DataRow(
-                                                cells:[
-                                                  DataCell(TitleText(text:prenom,color: Colors.black,size:12,)),
-                                                  DataCell(TitleText(text:name,color: Colors.black,size:12,)),
-                                                  DataCell(TitleText(text:crer,color: Colors.black,size:12,))
-                                                ]
-                                            );
-                                          }).toList(),
-                                        );
-                                      }
-                                    }
-                                ),],
-                            )             ,
-                          )
-
-                      ),
-                    )
-                )
-              ],
-            ),
+              SizedBox(height: 20),
+              FloatingActionButton(
+                  child:Icon(Icons.person),
+                  onPressed:(){
+                    Navigator.of(context).push(MaterialPageRoute(builder:
+                        (context)=>const ListClient()));
+                  }
+              ),
 
           ],
         ),
       )
     );
   }
-  Future addClient() async{
+  Future addClient(prenom,nom,telephone) async{
     Map list={
-      'name':nameController.text,
-      'prenom':prenomController.text
+      'Prenom':prenom,
+      'Name':nom,
+      'telephone':telephone
     };
     var url ='http://192.168.1.4:8000/createClients';
     var response = await http.post(Uri.parse(url),body:list,
-        headers: {'Content-type':'application/json'}
+        //headers: {'Content-type':'application/json'}
     );
-    print(response);
     if(response.statusCode==200){
       var jsonResponse = jsonEncode(response.body);
       ScaffoldMessenger.of(context).showSnackBar(
