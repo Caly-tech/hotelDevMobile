@@ -28,7 +28,7 @@ class _ChambreState extends State<Chambre> {
 
 
     return SingleChildScrollView(
-      child:_isLoading?const CircularProgressIndicator():Container(
+      child:Container(
       margin:const EdgeInsets.only(top:10),
       child: Column(
         children: [
@@ -120,9 +120,7 @@ class _ChambreState extends State<Chambre> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: (){
-                            setState(() {
-                              _isLoading=true;
-                            });
+                            //setState(() {_isLoading=true;});
                             if(_keyForm.currentState!.validate()) {
                               addChambre(_categorieid,etatController.text,
                                   nbreChControntroller.text,descController.text,
@@ -161,12 +159,17 @@ class _ChambreState extends State<Chambre> {
        var response= await http.post(Uri.parse(url),body: list);
        if(response.statusCode==200){
          var jsonResponse = jsonDecode(response.body);
-         setState(() {
-           _isLoading=false;
-         });
+         //setState(() {_isLoading=false;});
          ScaffoldMessenger.of(context).showSnackBar(
              const SnackBar(content:Text('Chambre ajouté avec success!!!'),
                backgroundColor: Colors.green,
+             )
+         );
+       }
+       else{
+         ScaffoldMessenger.of(context).showSnackBar(
+             const SnackBar(content:Text('Erreur  ajout!!!'),
+               backgroundColor: Colors.black,
              )
          );
        }

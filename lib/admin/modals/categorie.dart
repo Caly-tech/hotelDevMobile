@@ -90,4 +90,22 @@ class _CategorieState extends State<Categorie> {
   }
 }
 
-
+/*Container(
+                                margin: EdgeInsets.only(top: 10),
+                                child:Column(
+                                  children: [
+                                    Container(
+                                      margin:EdgeInsets.only(right: 10),
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topRight:Radius.circular(25),
+                                          topLeft:Radius.circular(25),
+                                          bottomRight:Radius.circular(25),
+                                          bottomLeft:Radius.circular(25),
+                                        )
+                                      ),
+                                      child: TitleText(text: etat, color:Colors.black),
+                                    )
+                                  ],
+                                ) ,
+                              );*/

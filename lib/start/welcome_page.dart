@@ -58,7 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
                        ),
                        SizedBox(height: 10),
                        ElevatedButton(onPressed: (){
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const ChoicePage()));
+                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const   ChoicePage()));
                        }, child:SubTitleText(text:"Get Started",
                            color:Colors.white
                        )

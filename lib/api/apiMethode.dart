@@ -44,3 +44,21 @@ Future getClient(id) async{
   }
   return jsonResponse['Chambres'];
 }
+////////////
+Future getChambres() async{
+  var response = await http.get(Uri.parse("$url/showChambres"));
+  var jsonResponse;
+  if(response.statusCode==200){
+    jsonResponse=jsonDecode(response.body);
+  }
+  return jsonResponse['Chambres'];
+}
+/////////////
+Future getChambre(id) async{
+  var response = await http.get(Uri.parse("$url/showChambres/$id"));
+  var jsonResponse;
+  if(response.statusCode==200){
+    jsonResponse=jsonDecode(response.body);
+  }
+  return jsonResponse['Chambres'];
+}

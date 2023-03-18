@@ -14,7 +14,6 @@ class DetailClient extends StatelessWidget {
       body:FutureBuilder(
           future: getClient(id),
           builder:(context,snapshot){
-            print(snapshot.data);
             if(snapshot.data==null){
               return CircularProgressIndicator();
             }
