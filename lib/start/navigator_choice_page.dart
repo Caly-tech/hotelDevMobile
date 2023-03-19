@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestion_hotel/start/home_page.dart';
 import 'package:gestion_hotel/start/subtitleText.dart';
 import 'package:gestion_hotel/start/titleText.dart';
+import 'package:gestion_hotel/user/welcomeUser.dart';
 
 import '../admin/modals/accueil.dart';
 
@@ -41,7 +42,7 @@ class ChoicePage extends StatelessWidget {
               width:100,
               height: 40,
               child: ElevatedButton(onPressed:(){
-                Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const HomePage()));
+                Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const WelcomeUser()));
               }, child:SubTitleText(text:"User", color:Colors.white,size: 17,)
               ),
             ),
