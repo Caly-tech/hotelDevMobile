@@ -7,16 +7,14 @@ import 'package:http/http.dart' as http;
 
 var url ="http://192.168.1.4:8000";
 Future getCategory() async{
-  var response = await http.get(Uri.parse(url+"/showChambres"),
-      headers: {
-    'Content-type':'application/json',
-  }
+  var response = await http.get(Uri.parse(url+"/showCategories"),
+      //headers: {'Content-type':'application/json',}
   );
   var jsonResponse;
   if(response.statusCode==200){
      jsonResponse =jsonDecode(response.body);
   }
-  return jsonResponse['categorie'];
+  return jsonResponse['Categories'];
 }
 ////////////////////////////////////////////////////////////
 ////CLIENT////////////////////

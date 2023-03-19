@@ -43,8 +43,9 @@ class _ChambreState extends State<Chambre> {
                     Container(
                       width: MediaQuery.of(context).size.width*1,
                       child: FutureBuilder(
-                          future: getClients(),
+                          future: getCategory(),
                           builder:(context,snapshot){
+                            print(snapshot.data);
                             if(snapshot.data==null){
                               return CircularProgressIndicator();
                             }
@@ -59,7 +60,7 @@ class _ChambreState extends State<Chambre> {
                                   },
                                   value: _categorieid,
                                   items:snapshot.data.map<DropdownMenuItem<String>>((categorie){
-                                    var name=categorie['Prenom'].toString();
+                                    var name=categorie['NomCategorie'].toString();
                                     var id=categorie['ID'].toString();
                                     return DropdownMenuItem<String>(
                                     value:id.toString(),
@@ -126,9 +127,9 @@ class _ChambreState extends State<Chambre> {
                                   nbreChControntroller.text,descController.text,
                                   capaciteController.text, serviceController.text,
                                   surfaceController.text);
-                              _categorieid.clear();etatController.clear();nbreChControntroller.clear();
-                              descController.clear();capaciteController.clear();serviceController.clear();
-                              serviceController.clear();
+                             // _categorieid.clear();etatController.clear();nbreChControntroller.clear();
+                            //  descController.clear();capaciteController.clear();serviceController.clear();
+                           //   serviceController.clear();
                             }
                           },
                           child:const Text("Envoyer"),
