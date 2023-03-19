@@ -16,32 +16,9 @@ class _AccueilState extends State<Accueil> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            margin:const EdgeInsets.only(top: 10),
-            child: TitleText(text:"Liste Chambre", color:Colors.black,size:17),
-          ),
           Column(
             children: [
-              FutureBuilder(
-                  future: getChambres(),
-                  builder:(context,snapshot){
-                    print(snapshot.data);
-                    if(snapshot.data==null){
-                      return CircularProgressIndicator();
-                    }
-                    else{
-                      List chambres = snapshot.data;
-                      return ListView.builder(
-                      itemCount: snapshot.data.length,
-                        itemBuilder: (context,i){
-                          return ListTile(
-                            title: Text(snapshot.data[i]['EtatChambre']),
-                          );
-                        }
-                      );
-                    }
-                  }
-              ),
+              Image.asset("assets/images/hotel_2.png",fit: BoxFit.cover),
             ],
           )
         ],

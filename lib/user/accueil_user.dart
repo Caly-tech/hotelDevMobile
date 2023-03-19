@@ -10,8 +10,16 @@ class AccueilUser extends StatefulWidget {
 class _AccueilUserState extends State<AccueilUser> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Accueil"),
+    return SingleChildScrollView(
+        child: Column(
+        children: [
+        Column(
+        children: [
+          Image.asset("assets/images/hotel_1.png",fit: BoxFit.cover),
+         ],
+           )
+        ],
+        ),
     );
   }
 }
