@@ -27,13 +27,12 @@ class _ReservationState extends State<Reservation> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(top: 50),
         child: Column(
           children: [
             Column(
               children: [
-                TitleText(text:"Ajouter Reservation", color:Colors.black, size: 15,),
-                const SizedBox(height: 20),
+                Image.asset("assets/images/hotel_4.png",fit: BoxFit.cover),
+                TitleText(text:"Ajouter Reservation", color:Colors.black, size: 13,),
                 Form(
                     key: _formKey,
                     child:Column(
