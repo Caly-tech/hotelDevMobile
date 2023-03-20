@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_hotel/api/apiMethode.dart';
 
 class AccueilUser extends StatefulWidget {
   const AccueilUser({Key? key}) : super(key: key);
@@ -17,7 +18,21 @@ class _AccueilUserState extends State<AccueilUser> {
         children: [
           Image.asset("assets/images/hotel_1.png",fit: BoxFit.cover),
          ],
-           )
+           ),
+          FutureBuilder(
+            future: getChambres(),
+              builder:(context,snapshot){
+              return ListView.builder(
+                 itemCount: snapshot.data.length,
+                  itemBuilder:(context,index){
+                    return ListTile(
+                      title: Text(snapshot.data['EtatChambre']),
+                    );
+                  }
+              );
+              }
+          )
+
         ],
         ),
     );
