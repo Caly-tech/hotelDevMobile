@@ -15,7 +15,7 @@ class _ListClientState extends State<ListClient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: TitleText(text:"Liste Clients", color:Colors.white),centerTitle: true),
+      appBar: AppBar(title: TitleText(text:"Liste Clients", color:Colors.white,size: 15,),centerTitle: true),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width*1,

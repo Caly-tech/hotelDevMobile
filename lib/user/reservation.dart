@@ -40,7 +40,7 @@ class _ReservationState extends State<Reservation> {
                         Container(
                           width: MediaQuery.of(context).size.width*1,
                           child: FutureBuilder(
-                              future: getChambres(),
+                              future: getCategory(),
                               builder:(context,snapshot){
                                 print(snapshot.data);
                                 if(snapshot.data==null){
@@ -48,7 +48,7 @@ class _ReservationState extends State<Reservation> {
                                 }
                                 else{
                                   return DropdownButton<String>(
-                                      hint: TitleText(text:"Choisir la capicité ?", color:Colors.black,size: 13,),
+                                      hint: TitleText(text:"Choisir une categorie", color:Colors.black,size: 13,),
                                       dropdownColor: Colors.pink,
                                       onChanged:(value){
                                         setState(() {
@@ -57,11 +57,11 @@ class _ReservationState extends State<Reservation> {
                                       },
                                       value: _chambreId,
                                       items:snapshot.data.map<DropdownMenuItem<String>>((chambre){
-                                        var name=chambre['Capacites'].toString();
-                                        var id=chambre['ID'].toString();
+                                        var nameCh=chambre['NomCategorie'].toString();
+                                        var idCh=chambre['ID'].toString();
                                         return DropdownMenuItem<String>(
-                                          value:id.toString(),
-                                          child:Text(name),
+                                          value:idCh.toString(),
+                                          child:Text(nameCh),
                                         );
 
                                       }).toList()
@@ -76,7 +76,6 @@ class _ReservationState extends State<Reservation> {
                           child: FutureBuilder(
                               future: getClients(),
                               builder:(context,snapshot){
-                                print(snapshot.data);
                                 if(snapshot.data==null){
                                   return CircularProgressIndicator();
                                 }
@@ -187,7 +186,7 @@ class _ReservationState extends State<Reservation> {
       'ClientsID':_clientId,
       'ChambresID':chambreId
    };
-   var url='http://192.168.1.4:8000/createReservations';
+   var url='http://192.168.1.8:8000/createReservation';
    var response= await http.post(Uri.parse(url),body: list);
    if(response.statusCode==200){
      var jsonResponse = jsonDecode(response.body);

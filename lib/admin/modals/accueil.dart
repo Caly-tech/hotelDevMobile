@@ -19,6 +19,7 @@ class _AccueilState extends State<Accueil> {
           Column(
             children: [
               Image.asset("assets/images/hotel_2.png",fit: BoxFit.cover),
+              TitleText(text: "Bienvenue a Sen HOTEL", color:Colors.black,size: 15),
             ],
           )
         ],

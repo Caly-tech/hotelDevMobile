@@ -156,7 +156,7 @@ class _ChambreState extends State<Chambre> {
          'Services':service,
          'Surfaces':surface
        };
-       var url='http://192.168.1.4:8000/createChambres';
+       var url='http://192.168.1.8:8000/createChambres';
        var response= await http.post(Uri.parse(url),body: list);
        if(response.statusCode==200){
          var jsonResponse = jsonDecode(response.body);

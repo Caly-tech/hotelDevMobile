@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gestion_hotel/admin/listCetagorie.dart';
 import 'package:gestion_hotel/api/apiMethode.dart';
 import 'package:gestion_hotel/ui/custom_form.dart';
 import 'package:http/http.dart' as http;
@@ -22,6 +23,7 @@ class _CategorieState extends State<Categorie> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width*1,
       margin: EdgeInsets.only(top: 50),
       child: Column(
       children: [
@@ -58,6 +60,14 @@ class _CategorieState extends State<Categorie> {
                           child:const Text("Envoyer"),
                         ),
                       ),
+                    SizedBox(height: 20),
+                    FloatingActionButton(
+                        child:Icon(Icons.category),
+                        onPressed:(){
+                          Navigator.of(context).push(MaterialPageRoute(builder:
+                              (context)=>const ListeCategorie()));
+                        }
+                    ),
             ],
           )
 
@@ -74,7 +84,7 @@ class _CategorieState extends State<Categorie> {
       'NomCategorie':nomCategorie,
       'Tarifs':tarif
     };
-    var url ='http://192.168.1.4:8000/createCategories';
+    var url ='http://192.168.1.8:8000/createCategories';
     var response = await http.post(Uri.parse(url),body:list,
       //  headers: {'Content-type':'application/json',}
     );

@@ -20,8 +20,11 @@ class DetailClient extends StatelessWidget {
             else{
               List detail=snapshot.data;
 
+
               return ListView(
                 children:detail.map((data){
+                  var telephone=data['Telephone'];
+                  var tele=telephone.toString();
                   return Container(
                     margin:const EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width,
@@ -41,10 +44,17 @@ class DetailClient extends StatelessWidget {
                         ),
                         Row(
                           children: [
+                            SubTitleText(text:"Telephone : ", color:Colors.black,size: 14),
+                            TitleText(text:tele, color:Colors.black,size: 17)
+                          ],
+                        ),
+                        Row(
+                          children: [
                             SubTitleText(text:"Creer le : ", color:Colors.black,size: 14),
                             TitleText(text: data['CreatedAt'], color:Colors.black,size: 17)
                           ],
                         ),
+
                         Row(
                           children: [
                             SubTitleText(text:"Reservation : ", color:Colors.black,size: 14),

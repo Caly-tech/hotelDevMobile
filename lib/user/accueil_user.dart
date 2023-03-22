@@ -19,7 +19,7 @@ class _AccueilUserState extends State<AccueilUser> {
           Image.asset("assets/images/hotel_1.png",fit: BoxFit.cover),
          ],
            ),
-          FutureBuilder(
+         /* FutureBuilder(
             future: getChambres(),
               builder:(context,snapshot){
               return ListView.builder(
@@ -31,7 +31,7 @@ class _AccueilUserState extends State<AccueilUser> {
                   }
               );
               }
-          )
+          )*/
 
         ],
         ),

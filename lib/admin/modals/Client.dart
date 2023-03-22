@@ -96,9 +96,9 @@ class _ClientState extends State<Client> {
     Map list={
       'Prenom':prenom,
       'Name':nom,
-      'telephone':telephone
+      'Telephone':telephone
     };
-    var url ='http://192.168.1.4:8000/createClients';
+    var url ='http://192.168.1.8:8000/createClients';
     var response = await http.post(Uri.parse(url),body:list,
         //headers: {'Content-type':'application/json'}
     );
